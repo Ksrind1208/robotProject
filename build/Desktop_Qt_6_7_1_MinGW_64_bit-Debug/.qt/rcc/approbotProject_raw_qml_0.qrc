@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/robotProject/">
+    <file alias="Main.qml">D:/File_code/Qt/robotProject/Main.qml</file>
+  </qresource>
+</RCC>
+

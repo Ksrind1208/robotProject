@@ -1,0 +1,14 @@
+-rootPath
+D:/File_code/Qt/robotProject
+-cmake-output
+-output-file
+D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qt/qml_imports/approbotProject_build.cmake
+-importPath
+D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/robotProject
+-importPath
+D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug
+-importPath
+D:/SystemFile/Qt/6.7.1/mingw_64/./qml
+-qrcFiles
+D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qt/rcc/qmake_robotProject.qrc
+D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qt/rcc/approbotProject_raw_qml_0.qrc
