@@ -1,7 +1,23 @@
 #include "Backend.h"
-
+#include <sstream>
+#include <string>
+#include <iomanip>
 Backend::Backend(QObject *parent) : QObject(parent), m_l1(0), m_l2(0), m_l3(0), m_x(0), m_y(0), m_z(0), m_q1(0), m_q2(0), m_q3(0), m_q4(0)
 {
+    m_l2=8;
+    m_l3=8;
+    serialPort.setPortName("COM3");
+    bool success = serialPort.open(QSerialPort::ReadWrite);
+    serialPort.setBaudRate(QSerialPort::Baud9600);
+    serialPort.setDataBits(QSerialPort::Data8);
+    serialPort.setParity(QSerialPort::NoParity);
+    serialPort.setStopBits(QSerialPort::OneStop);
+    serialPort.setFlowControl(QSerialPort::NoFlowControl);
+    if (success) {
+        qDebug() << "Serial port is opened";
+    }else{
+        qDebug()<<"Serial port is not available";
+    }
 }
 
 double Backend::l1()
@@ -154,7 +170,48 @@ void Backend::setQ4(double q4)
     }
 }
 
-double Backend::sum(double a, double b)
+void Backend::turnOnLed()
 {
-    return a + b;
+    writeToSerialPort("on\n");
 }
+
+void Backend::turnOffLed()
+{
+    writeToSerialPort("off\n");
+}
+
+void Backend::khongGianKhop(float q1,float q2,float q3,float q4)
+{
+}
+
+void Backend::khongGianThaoTac(float a,float b,float c)
+{
+    float q1 = atan2(b, a);
+    float x2 = a / cos(q1);
+    float r = sqrt(x2*x2 + c*c);
+    float D = (r*r - m_l3*m_l3 - m_l2*m_l2) / (2 * m_l3 * m_l2);
+    float q3 = atan2(-sqrt(1-D*D),D);
+    float q2 = atan2(c,x2) - q3 / 2;
+    m_q1 = round((q1 * 180 / 3.14)*100.0)/100.0;
+    m_q2 = round((90 - q2 * 180 / 3.14)*100.0)/100.0;
+    m_q3 = round((105 + q2* 180 / 3.14 + q3* 180 / 3.14)*100.0)/100.0;
+    m_q4=130;
+    m_x=round(a*100.0)/100.0;
+    m_y=round(b*100.0)/100.0;
+    m_z=round(c*100.0)/100.0;
+}
+
+void Backend::writeToSerialPort(const QByteArray &data)
+{
+    serialPort.write(data);
+}
+
+void Backend::closeSerialPort()
+{
+    if (serialPort.isOpen()) {
+        serialPort.close();
+        qDebug() << "Serial port is closed";
+    }
+}
+
+

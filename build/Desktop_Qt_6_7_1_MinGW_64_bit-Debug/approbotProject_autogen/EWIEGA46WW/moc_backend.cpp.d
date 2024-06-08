@@ -381,6 +381,10 @@ D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/approbotP
   D:/SystemFile/Qt/6.7.1/mingw_64/include/QtQmlIntegration/QtQmlIntegrationDepends \
   D:/SystemFile/Qt/6.7.1/mingw_64/include/QtQmlIntegration/qqmlintegration.h \
   D:/SystemFile/Qt/6.7.1/mingw_64/include/QtQmlIntegration/qtqmlintegrationversion.h \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/QSerialPort \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/qserialport.h \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/qserialportglobal.h \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/qtserialportexports.h \
   D:/SystemFile/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h \
   D:/SystemFile/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/syslimits.h \
   D:/SystemFile/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/adxintrin.h \

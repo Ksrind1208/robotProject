@@ -390,6 +390,10 @@ approbotProject_autogen/timestamp: \
   D:/SystemFile/Qt/6.7.1/mingw_64/include/QtQmlIntegration/QtQmlIntegrationDepends \
   D:/SystemFile/Qt/6.7.1/mingw_64/include/QtQmlIntegration/qqmlintegration.h \
   D:/SystemFile/Qt/6.7.1/mingw_64/include/QtQmlIntegration/qtqmlintegrationversion.h \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/QSerialPort \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/qserialport.h \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/qserialportglobal.h \
+  D:/SystemFile/Qt/6.7.1/mingw_64/include/QtSerialPort/qtserialportexports.h \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6/Qt6Config.cmake \
@@ -803,6 +807,14 @@ approbotProject_autogen/timestamp: \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets-relwithdebinfo.cmake \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets.cmake \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsVersionlessTargets.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortAdditionalTargetInfo.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfig.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfigVersion.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfigVersionImpl.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortDependencies.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets-relwithdebinfo.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets.cmake \
+  D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6SerialPort/Qt6SerialPortVersionlessTargets.cmake \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateAdditionalTargetInfo.cmake \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfig.cmake \
   D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake \

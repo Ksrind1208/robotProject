@@ -16,6 +16,7 @@ Window {
         id:myBackend
     }
 
+
     Item {
         property string currentuserName: "admin"
         property string currentpassWord: "admin"
@@ -122,9 +123,8 @@ Window {
                 }
                 onClicked: {
                     if (usernameField.text === "admin" && passwordField.text === "admin" ||usernameField.text==""&& passwordField.text=="") {
-                        myBackend.l1=l1;
-                        myBackend.l1=12.3;
-                        console.log(myBackend.sum(1,2));
+                        console.log(myBackend.l2);
+                        console.log(myBackend.l3);
                         firstScreen.visible = false
                         secondScreen.visible = true
                         errorLogin.visible = false
@@ -255,7 +255,8 @@ Window {
                                 }
                             }
 
-                            onClicked: {
+                            onClicked: {       
+                                myBackend.turnOnLed();
                                 windowmoveJoint.visible=true
                                 secondScreen.visible=false
                             }
@@ -295,6 +296,7 @@ Window {
 
                             onClicked: {
                                 // Toggle visibility of windowmoveTCP
+                                myBackend.turnOffLed();
                                 windowmoveTCP.visible = true;
                                 secondScreen.visible = false; // Assuming secondScreen is your main screen
                             }
@@ -429,6 +431,7 @@ Window {
                             }
 
                             onClicked: {
+                                myBackend.closeSerialPort();
                                 Qt.quit()
                             }
                         }
@@ -860,8 +863,9 @@ Window {
                                 border.width: 2
                                 radius: 5
                                 Text {
+                                    id:x
                                     anchors.centerIn: parent
-                                    text: "x: 123"
+                                    text: "x:"
                                     color: "black"
                                     font.pointSize: 20
                                 }
@@ -874,8 +878,9 @@ Window {
                                 border.width: 2
                                 radius: 5
                                 Text {
+                                    id:y
                                     anchors.centerIn: parent
-                                    text: "y: 456"
+                                    text: "y:"
                                     color: "black"
                                     font.pointSize: 20
                                 }
@@ -888,8 +893,9 @@ Window {
                                 border.width: 2
                                 radius: 5
                                 Text {
+                                    id:z
                                     anchors.centerIn: parent
-                                    text: "z: 789"
+                                    text: "z:"
                                     color: "black"
                                     font.pointSize: 20
                                 }
@@ -913,56 +919,60 @@ Window {
                             spacing: 50
 
                             Rectangle {
-                                width: 100
+                                width: 150
                                 height: 40
                                 border.color: "white"
                                 border.width: 2
                                 radius: 5
                                 Text {
+                                    id:q1
                                     anchors.centerIn: parent
-                                    text: "q1: 10"
+                                    text: "q1: 0"
                                     color: "black"
                                     font.pointSize: 20
                                 }
                             }
 
                             Rectangle {
-                                width: 100
+                                width: 150
                                 height: 40
                                 border.color: "white"
                                 border.width: 2
                                 radius: 5
                                 Text {
+                                    id:q2
                                     anchors.centerIn: parent
-                                    text: "q2: 20"
+                                    text: "q2: 0"
                                     color: "black"
                                     font.pointSize: 20
                                 }
                             }
 
                             Rectangle {
-                                width: 100
+                                width: 150
                                 height: 40
                                 border.color: "white"
                                 border.width: 2
                                 radius: 5
                                 Text {
+                                    id:q3
                                     anchors.centerIn: parent
-                                    text: "q3: 30"
+                                    text: "q3: 0"
                                     color: "black"
                                     font.pointSize: 20
                                 }
                             }
 
                             Rectangle {
-                                width: 100
+                                width: 150
                                 height: 40
                                 border.color: "white"
                                 border.width: 2
                                 radius: 5
                                 Text {
+                                    id:q4
                                     anchors.centerIn: parent
-                                    text: "q4: 40"
+                                    text: "q4: 0"
                                     color: "black"
                                     font.pointSize: 20
                                 }
@@ -1116,7 +1126,17 @@ Window {
                         verticalAlignment: Text.AlignVCenter
                     }
                     onClicked: {
-                        console.log("Q1: " + q1Field.text + ", Q2: " + q2Field.text + ", Q3: " + q3Field.text + ", Q4: " + q4Field.text);
+                        myBackend.khongGianKhop(Number(q1Field.text),Number(q2Field.text),Number(q3Field.text),Number(q4Field.text))
+                        myBackend.writeToSerialPort("q:"+q1Field.text+";"+q2Field.text+";"+q3Field.text+";"+q4Field.text+";");
+                        myBackend.q1=q1Field.text;
+                        myBackend.q2=q2Field.text;
+                        myBackend.q3=q3Field.text;
+                        myBackend.q4=q4Field.text;
+                        q1.text="q1:"+q1Field.text;
+                        q2.text="q2:"+q2Field.text;
+                        q3.text="q3:"+q3Field.text;
+                        q4.text="q4:"+q4Field.text;
+
                         windowmoveJoint.visible = false;
                         secondScreen.visible = true; // Assuming secondScreen is your main screen
                     }
@@ -1244,7 +1264,15 @@ Window {
                         verticalAlignment: Text.AlignVCenter
                     }
                     onClicked: {
-                        console.log("X: " + xField.text + ", Y: " + yField.text + ", Z: " + zField.text);
+                        myBackend.khongGianThaoTac(Number(xField.text),Number(yField.text),Number(zField.text));
+                        x.text="x: "+myBackend.x;
+                        y.text="y: "+myBackend.y;
+                        z.text="z: "+myBackend.z;
+                        q1.text="q1: "+myBackend.q1;
+                        q2.text="q2: "+myBackend.q2;
+                        q3.text="q3: "+myBackend.q3;
+                        q4.text="q4: "+myBackend.q4;
+                        myBackend.writeToSerialPort("q:"+myBackend.q1+";"+myBackend.q2+";"+myBackend.q3+";"+myBackend.q4+";");
                         windowmoveTCP.visible = false;
                         secondScreen.visible = true; // Assuming secondScreen is your main screen
                     }

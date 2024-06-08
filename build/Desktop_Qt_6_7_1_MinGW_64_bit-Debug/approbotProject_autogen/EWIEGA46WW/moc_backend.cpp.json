@@ -11,18 +11,71 @@
             "methods": [
                 {
                     "access": "public",
+                    "name": "turnOnLed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "turnOffLed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "q1",
+                            "type": "float"
+                        },
+                        {
+                            "name": "q2",
+                            "type": "float"
+                        },
+                        {
+                            "name": "q3",
+                            "type": "float"
+                        },
+                        {
+                            "name": "q4",
+                            "type": "float"
+                        }
+                    ],
+                    "name": "khongGianKhop",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
                     "arguments": [
                         {
                             "name": "a",
-                            "type": "double"
+                            "type": "float"
                         },
                         {
                             "name": "b",
-                            "type": "double"
+                            "type": "float"
+                        },
+                        {
+                            "name": "c",
+                            "type": "float"
                         }
                     ],
-                    "name": "sum",
-                    "returnType": "double"
+                    "name": "khongGianThaoTac",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "data",
+                            "type": "QByteArray"
+                        }
+                    ],
+                    "name": "writeToSerialPort",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "closeSerialPort",
+                    "returnType": "void"
                 }
             ],
             "object": true,

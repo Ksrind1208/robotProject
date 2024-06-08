@@ -51,19 +51,26 @@ constexpr auto qt_meta_stringdata_CLASSBackendENDCLASS = QtMocHelpers::stringDat
     "q2Changed",
     "q3Changed",
     "q4Changed",
-    "sum",
+    "turnOnLed",
+    "turnOffLed",
+    "khongGianKhop",
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "khongGianThaoTac",
     "a",
     "b",
+    "c",
+    "writeToSerialPort",
+    "data",
+    "closeSerialPort",
     "l1",
     "l2",
     "l3",
     "x",
     "y",
-    "z",
-    "q1",
-    "q2",
-    "q3",
-    "q4"
+    "z"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -76,8 +83,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBackendENDCLASS[] = {
       12,       // revision
        0,       // classname
        1,   14, // classinfo
-      11,   16, // methods
-      10,   97, // properties
+      16,   16, // methods
+      10,  144, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -87,19 +94,24 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBackendENDCLASS[] = {
        1,    2,
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   82,    4, 0x06,   11 /* Public */,
-       5,    0,   83,    4, 0x06,   12 /* Public */,
-       6,    0,   84,    4, 0x06,   13 /* Public */,
-       7,    0,   85,    4, 0x06,   14 /* Public */,
-       8,    0,   86,    4, 0x06,   15 /* Public */,
-       9,    0,   87,    4, 0x06,   16 /* Public */,
-      10,    0,   88,    4, 0x06,   17 /* Public */,
-      11,    0,   89,    4, 0x06,   18 /* Public */,
-      12,    0,   90,    4, 0x06,   19 /* Public */,
-      13,    0,   91,    4, 0x06,   20 /* Public */,
+       3,    0,  112,    4, 0x06,   11 /* Public */,
+       5,    0,  113,    4, 0x06,   12 /* Public */,
+       6,    0,  114,    4, 0x06,   13 /* Public */,
+       7,    0,  115,    4, 0x06,   14 /* Public */,
+       8,    0,  116,    4, 0x06,   15 /* Public */,
+       9,    0,  117,    4, 0x06,   16 /* Public */,
+      10,    0,  118,    4, 0x06,   17 /* Public */,
+      11,    0,  119,    4, 0x06,   18 /* Public */,
+      12,    0,  120,    4, 0x06,   19 /* Public */,
+      13,    0,  121,    4, 0x06,   20 /* Public */,
 
  // methods: name, argc, parameters, tag, flags, initial metatype offsets
-      14,    2,   92,    4, 0x02,   21 /* Public */,
+      14,    0,  122,    4, 0x02,   21 /* Public */,
+      15,    0,  123,    4, 0x02,   22 /* Public */,
+      16,    4,  124,    4, 0x02,   23 /* Public */,
+      21,    3,  133,    4, 0x02,   28 /* Public */,
+      25,    1,  140,    4, 0x02,   32 /* Public */,
+      27,    0,  143,    4, 0x02,   34 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -114,19 +126,24 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSBackendENDCLASS[] = {
     QMetaType::Void,
 
  // methods: parameters
-    QMetaType::Double, QMetaType::Double, QMetaType::Double,   15,   16,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Float, QMetaType::Float, QMetaType::Float, QMetaType::Float,   17,   18,   19,   20,
+    QMetaType::Void, QMetaType::Float, QMetaType::Float, QMetaType::Float,   22,   23,   24,
+    QMetaType::Void, QMetaType::QByteArray,   26,
+    QMetaType::Void,
 
  // properties: name, type, flags
-      17, QMetaType::Double, 0x00015103, uint(0), 0,
-      18, QMetaType::Double, 0x00015103, uint(1), 0,
-      19, QMetaType::Double, 0x00015103, uint(2), 0,
-      20, QMetaType::Double, 0x00015103, uint(3), 0,
-      21, QMetaType::Double, 0x00015103, uint(4), 0,
-      22, QMetaType::Double, 0x00015103, uint(5), 0,
-      23, QMetaType::Double, 0x00015103, uint(6), 0,
-      24, QMetaType::Double, 0x00015103, uint(7), 0,
-      25, QMetaType::Double, 0x00015103, uint(8), 0,
-      26, QMetaType::Double, 0x00015103, uint(9), 0,
+      28, QMetaType::Double, 0x00015103, uint(0), 0,
+      29, QMetaType::Double, 0x00015103, uint(1), 0,
+      30, QMetaType::Double, 0x00015103, uint(2), 0,
+      31, QMetaType::Double, 0x00015103, uint(3), 0,
+      32, QMetaType::Double, 0x00015103, uint(4), 0,
+      33, QMetaType::Double, 0x00015103, uint(5), 0,
+      17, QMetaType::Double, 0x00015103, uint(6), 0,
+      18, QMetaType::Double, 0x00015103, uint(7), 0,
+      19, QMetaType::Double, 0x00015103, uint(8), 0,
+      20, QMetaType::Double, 0x00015103, uint(9), 0,
 
        0        // eod
 };
@@ -180,10 +197,26 @@ Q_CONSTINIT const QMetaObject Backend::staticMetaObject = { {
         void,
         // method 'q4Changed'
         void,
-        // method 'sum'
-        double,
-        double,
-        double
+        // method 'turnOnLed'
+        void,
+        // method 'turnOffLed'
+        void,
+        // method 'khongGianKhop'
+        void,
+        float,
+        float,
+        float,
+        float,
+        // method 'khongGianThaoTac'
+        void,
+        float,
+        float,
+        float,
+        // method 'writeToSerialPort'
+        void,
+        const QByteArray &,
+        // method 'closeSerialPort'
+        void
     >,
     nullptr
 } };
@@ -204,8 +237,12 @@ void Backend::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 7: _t->q2Changed(); break;
         case 8: _t->q3Changed(); break;
         case 9: _t->q4Changed(); break;
-        case 10: { double _r = _t->sum((*reinterpret_cast< std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<double>>(_a[2])));
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
+        case 10: _t->turnOnLed(); break;
+        case 11: _t->turnOffLed(); break;
+        case 12: _t->khongGianKhop((*reinterpret_cast< std::add_pointer_t<float>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[4]))); break;
+        case 13: _t->khongGianThaoTac((*reinterpret_cast< std::add_pointer_t<float>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3]))); break;
+        case 14: _t->writeToSerialPort((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
+        case 15: _t->closeSerialPort(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -338,13 +375,13 @@ int Backend::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 16)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        _id -= 16;
     }else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {

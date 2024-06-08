@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <QtQml>
-
+#include <QSerialPort>
 class Backend : public QObject
 {
     Q_OBJECT
@@ -53,8 +53,12 @@ public:
     double q4();
     void setQ4(double q4);
 
-    // Function to calculate sum of two doubles
-    Q_INVOKABLE double sum(double a, double b);
+    Q_INVOKABLE void turnOnLed();
+    Q_INVOKABLE void turnOffLed();
+    Q_INVOKABLE void khongGianKhop(float q1,float q2,float q3,float q4);
+    Q_INVOKABLE void khongGianThaoTac(float a,float b,float c);
+    Q_INVOKABLE void writeToSerialPort(const QByteArray &data);
+    Q_INVOKABLE void closeSerialPort();
 
 signals:
     void l1Changed();
@@ -79,6 +83,7 @@ private:
     double m_q2;
     double m_q3;
     double m_q4;
+    QSerialPort serialPort;
 };
 
 #endif // BACKEND_H

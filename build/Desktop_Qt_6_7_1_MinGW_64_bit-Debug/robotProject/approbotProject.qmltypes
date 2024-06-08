@@ -33,11 +33,25 @@ Module {
         Signal { name: "q2Changed" }
         Signal { name: "q3Changed" }
         Signal { name: "q4Changed" }
+        Method { name: "turnOnLed" }
+        Method { name: "turnOffLed" }
         Method {
-            name: "sum"
-            type: "double"
-            Parameter { name: "a"; type: "double" }
-            Parameter { name: "b"; type: "double" }
+            name: "khongGianKhop"
+            Parameter { name: "q1"; type: "float" }
+            Parameter { name: "q2"; type: "float" }
+            Parameter { name: "q3"; type: "float" }
+            Parameter { name: "q4"; type: "float" }
         }
+        Method {
+            name: "khongGianThaoTac"
+            Parameter { name: "a"; type: "float" }
+            Parameter { name: "b"; type: "float" }
+            Parameter { name: "c"; type: "float" }
+        }
+        Method {
+            name: "writeToSerialPort"
+            Parameter { name: "data"; type: "QByteArray" }
+        }
+        Method { name: "closeSerialPort" }
     }
 }
