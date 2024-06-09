@@ -189,7 +189,7 @@ Window {
                 y:0
                 width: 474
                 height: 800
-                border.color: "white"
+                border.color: "#39FF14"
                 border.width: 4
 
                 Column{
@@ -1128,15 +1128,13 @@ Window {
                     onClicked: {
                         myBackend.khongGianKhop(Number(q1Field.text),Number(q2Field.text),Number(q3Field.text),Number(q4Field.text))
                         myBackend.writeToSerialPort("q:"+q1Field.text+";"+q2Field.text+";"+q3Field.text+";"+q4Field.text+";");
-                        myBackend.q1=q1Field.text;
-                        myBackend.q2=q2Field.text;
-                        myBackend.q3=q3Field.text;
-                        myBackend.q4=q4Field.text;
-                        q1.text="q1:"+q1Field.text;
-                        q2.text="q2:"+q2Field.text;
-                        q3.text="q3:"+q3Field.text;
-                        q4.text="q4:"+q4Field.text;
-
+                        q1.text="q1: "+myBackend.q1;
+                        q2.text="q2: "+myBackend.q2;
+                        q3.text="q3: "+myBackend.q3;
+                        q4.text="q4: "+myBackend.q4;
+                        x.text="x: "+myBackend.x;
+                        y.text="y: "+myBackend.y;
+                        z.text="z: "+myBackend.z;
                         windowmoveJoint.visible = false;
                         secondScreen.visible = true; // Assuming secondScreen is your main screen
                     }

@@ -182,6 +182,18 @@ void Backend::turnOffLed()
 
 void Backend::khongGianKhop(float q1,float q2,float q3,float q4)
 {
+    q2=90-q2;
+    q3=-(105+q2-q3);
+    float x=(m_l2*cos(q2*3.14/180)+m_l3*cos((q2+q3)*3.14/180))*cos(q1*3.14/180);
+    float y=(m_l2*cos(q2*3.14/180)+m_l3*cos((q2+q3)*3.14/180))*sin(q1*3.14/180);
+    float z=m_l2*sin(q2*3.14/180)+m_l3*sin((q2+q3)*3.14/180)+6.5;
+    m_q1=round(q1*100.0)/100.0;
+    m_q2=round(q2*100.0)/100.0;
+    m_q3=round(q3*100.0)/100.0;
+    m_q4=round(q4*100.0)/100.0;
+    m_x=round(x*100.0)/100.0;
+    m_y=round(y*100.0)/100.0;
+    m_z=round(z*100.0)/100.0;
 }
 
 void Backend::khongGianThaoTac(float a,float b,float c)
