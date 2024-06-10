@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/projectRobot1">D:/File_code/Qt/projectRobot1/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/projectRobot1</file>
+
+  </qresource>
+</RCC>

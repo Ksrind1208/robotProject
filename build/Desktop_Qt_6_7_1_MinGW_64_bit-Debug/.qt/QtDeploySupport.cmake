@@ -34,7 +34,7 @@ endif()
 set(__QT_DEPLOY_SYSTEM_NAME "Windows")
 set(__QT_DEPLOY_IS_SHARED_LIBS_BUILD "ON")
 set(__QT_DEPLOY_TOOL "D:/SystemFile/Qt/6.7.1/mingw_64/bin/windeployqt.exe")
-set(__QT_DEPLOY_IMPL_DIR "D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qt")
+set(__QT_DEPLOY_IMPL_DIR "D:/File_code/Qt/projectRobot1/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qt")
 set(__QT_DEPLOY_VERBOSE "")
 set(__QT_CMAKE_EXPORT_NAMESPACE "Qt6")
 set(__QT_DEPLOY_GENERATOR_IS_MULTI_CONFIG "0")
@@ -58,7 +58,7 @@ set(__QT_DEPLOY_QT_DEBUG_POSTFIX "")
 
 # Define the CMake commands to be made available during deployment.
 set(__qt_deploy_support_files
-    "D:/File_code/Qt/robotProject/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qt/QtDeployTargets.cmake"
+    "D:/File_code/Qt/projectRobot1/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qt/QtDeployTargets.cmake"
     "D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreDeploySupport.cmake"
     "D:/SystemFile/Qt/6.7.1/mingw_64/lib/cmake/Qt6Qml/Qt6QmlDeploySupport.cmake"
 )

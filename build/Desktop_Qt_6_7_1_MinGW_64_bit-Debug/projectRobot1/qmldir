@@ -1,0 +1,5 @@
+module projectRobot1
+typeinfo appprojectRobot1.qmltypes
+prefer :/projectRobot1/
+Main 1.0 Main.qml
+

@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/robotProject/Main.qml"));
+    const QUrl url(QStringLiteral("qrc:/projectRobot1/Main.qml"));
 
     qmlRegisterType<Backend>("Data",1,0,"Backend");
 
