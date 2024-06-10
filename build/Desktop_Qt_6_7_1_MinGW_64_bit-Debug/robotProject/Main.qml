@@ -5,8 +5,10 @@ import Data 1.0
 
 Window {
     id: root
-    width: 1423
-    height: 800
+    // w:1423
+    // h:800
+    width: Screen.width
+    height: Screen.height
     visible: true
     title: qsTr("Robot Project")
 
@@ -32,8 +34,10 @@ Window {
 
         Text {
             id: loginText
-            x: 175
-            y: 200
+            // x: 175
+            // y: 200
+            x: 175/1423*Screen.width
+            y: 200/800*Screen.height
             text: "LOGIN"
             color: "white"
             font.family: "Helvetica"
@@ -43,7 +47,7 @@ Window {
 
         Text {
             id: userName
-            x: 75
+            x: 75/1423*Screen.width
             y: loginText.y + loginText.height + 20
             text: "User name"
             color: "white"
@@ -54,11 +58,11 @@ Window {
 
         TextField {
             id: usernameField
-            x: 75
+            x: 75/1423*Screen.width
             y: userName.y + userName.height + 10
             placeholderText: "User name"
-            width: 300
-            height: 30
+            width: 300/1423*Screen.width
+            height: 30/800*Screen.height
             color: "black"
             background: Rectangle {
                 color: "#DDDDDD"
@@ -68,7 +72,7 @@ Window {
 
         Text {
             id: password
-            x: 75
+            x: 75/1423*Screen.width
             y: usernameField.y + usernameField.height + 20
             text: "Password"
             color: "white"
@@ -79,11 +83,11 @@ Window {
 
         TextField {
             id: passwordField
-            x: 75
+            x: 75/1423*Screen.width
             y: password.y + password.height + 10
             placeholderText: "Password"
-            width: 300
-            height: 30
+            width: 300/1423*Screen.width
+            height: 30/800*Screen.height
             echoMode: TextInput.Password
             color: "black"
             background: Rectangle {
@@ -94,10 +98,10 @@ Window {
 
         Rectangle {
             id: buttonLogin
-            x: 75
+            x: 75/1423*Screen.width
             y: passwordField.y + passwordField.height + 20
-            width: 300
-            height: 40
+            width: 300/1423*Screen.width
+            height: 40/800*Screen.height
             color: "#0076AE"
             radius: 5
 
@@ -163,8 +167,8 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20
-            width: 100
-            height: 30
+            width: 100/1423*Screen.width
+            height: 30/800*Screen.height
             onClicked: {
                 errorLogin.visible = false
                 firstScreen.visible = true
@@ -182,25 +186,41 @@ Window {
             color:"#003366"
             anchors.fill: parent
 
+            // Image {
+            //     id: borderImage
+            //     source: "file:///D:/File_code/Qt/blueNeon.png"
+            //     x:470/1423*Screen.width
+            //     y:0
+            //     width:20
+            //     height:Screen.height
+            // }
+
             Rectangle{
                 id:settingRectangle
                 color:"#003366"
                 x:0
                 y:0
-                width: 474
-                height: 800
-                border.color: "#39FF14"
-                border.width: 4
+                width: 474/1423*Screen.width
+                height: 800/800*Screen.height
+                // border.color: "#00CCCC"
+                // border.width: 4/1423*Screen.width
+
+                BorderImage {
+                    id: borderImage
+                    source: "file:///D:/File_code/Qt/blueNeon.png"
+                    width: 5; height: 800/800*Screen.height
+                }
+
 
                 Column{
-                    spacing: 30
-                    x:50
-                    y:50
+                    spacing: 30/800*Screen.height
+                    x:50/1423*Screen.width
+                    y:50/800*Screen.height
 
                     Rectangle{
                         id:home
-                        width: 374
-                        height: 60
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
                         color:"white"
                         radius: 10
 
@@ -230,8 +250,8 @@ Window {
 
                     Rectangle{
                         id:moveJoint
-                        width: 374
-                        height: 60
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
                         color:"white"
                         radius: 10
                         Text{
@@ -267,8 +287,8 @@ Window {
 
                     Rectangle {
                         id: moveTCP
-                        width: 374
-                        height: 60
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
                         color: "white"
                         radius: 10
 
@@ -306,8 +326,8 @@ Window {
 
                     Rectangle{
                         id:moveSLI
-                        width: 374
-                        height: 60
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
                         color:"white"
                         radius: 10
 
@@ -337,8 +357,8 @@ Window {
 
                     Rectangle{
                         id:moveCI
-                        width: 374
-                        height: 60
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
                         color:"white"
                         radius: 10
 
@@ -367,9 +387,45 @@ Window {
                     }
 
                     Rectangle{
+                        id:draganddrop
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
+                        color:"white"
+                        radius: 10
+
+                        Text{
+                            id:textDragandDrop
+                            text:"DRAG & DROP"
+                            anchors.centerIn: parent
+                            font.pointSize: 19
+                        }
+
+                        MouseArea{
+                            id:mouseDragandDrop
+                            anchors.fill: parent
+                            hoverEnabled:true
+
+                            onHoveredChanged: {
+                                if(containsMouse==true){
+                                    draganddrop.color="#0076AE"
+                                    textDragandDrop.color="white"
+                                }else{
+                                    draganddrop.color="white"
+                                    textDragandDrop.color="black"
+                                }
+                            }
+
+                            onClicked: {
+                                myBackend.closeSerialPort();
+                                Qt.quit()
+                            }
+                        }
+                    }
+
+                    Rectangle{
                         id:simulation
-                        width: 374
-                        height: 60
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
                         color:"white"
                         radius: 10
 
@@ -403,8 +459,8 @@ Window {
 
                     Rectangle{
                         id:quit
-                        width: 374
-                        height: 60
+                        width: 374/1423*Screen.width
+                        height: 60/800*Screen.height
                         color:"white"
                         radius: 10
 
@@ -442,19 +498,19 @@ Window {
             Rectangle{
                 id:controllRectangle
                 color:"#003366"
-                x:474
+                x:474/1423*Screen.width
                 y:0
-                width: 949
-                height: 533
-                border.color: "white"
-                border.width: 4
+                width: 949/1423*Screen.width
+                height: 533/800*Screen.height
+                // border.color: "#00CCCC"
+                // border.width: 4/1423*Screen.width
 
                 Text{
                     id:joy1
                     text: "JOY 1"
                     color: "white"
-                    x:100
-                    y:100
+                    x:100/1423*Screen.width
+                    y:100/800*Screen.height
                     font.family: "Helvetica"
                     font.pointSize: 24
                     font.bold: true
@@ -462,10 +518,10 @@ Window {
 
                 Canvas {
                         id: leftArrow
-                        width: 100
-                        height: 100
-                        x: 100+joy1.implicitWidth+20
-                        y:70
+                        width: 100/1423*Screen.width
+                        height: 100/800*Screen.height
+                        x: joy1.x+joy1.implicitWidth+20
+                        y:70/800*Screen.height
                         property color arrowColor: "white"
 
                         onPaint: {
@@ -503,10 +559,10 @@ Window {
                     }
                 Canvas {
                     id: rightArrow
-                    width: 100
-                    height: 100
-                    x:100+joy1.implicitWidth+20+leftArrow.width+20
-                    y:70
+                    width: 100/1423*Screen.width
+                    height: 100/800*Screen.height
+                    x:joy1.x+joy1.implicitWidth+20+leftArrow.width+20
+                    y:70/800*Screen.height
                     property color arrowColor: "white"
 
                     onPaint: {
@@ -547,8 +603,8 @@ Window {
                     id:joy2
                     text: "JOY 2"
                     color: "white"
-                    x:600
-                    y:100
+                    x:600/1423*Screen.width
+                    y:100/800*Screen.height
                     font.family: "Helvetica"
                     font.pointSize: 24
                     font.bold: true
@@ -556,10 +612,10 @@ Window {
 
                 Canvas {
                         id: upArrow
-                        width: 100
-                        height: 100
-                        x:600+joy2.implicitWidth+20
-                        y:10
+                        width: 100/1423*Screen.width
+                        height: 100/800*Screen.height
+                        x:joy2.x+joy2.implicitWidth+20
+                        y:10/800*Screen.height
                         property color arrowColor: "white"
 
                         onPaint: {
@@ -598,9 +654,9 @@ Window {
 
                 Canvas {
                         id: downArrow
-                        width: 100
-                        height: 100
-                        x:600+joy2.implicitWidth+20
+                        width: 100/1423*Screen.width
+                        height: 100/800*Screen.height
+                        x:joy2.x+joy2.implicitWidth+20
                         y:upArrow.y+upArrow.height+20
                         property color arrowColor: "white"
 
@@ -642,8 +698,8 @@ Window {
                     id:joy3
                     text: "JOY 3"
                     color: "white"
-                    x:100
-                    y:380
+                    x:100/1423*Screen.width
+                    y:380/800*Screen.height
                     font.family: "Helvetica"
                     font.pointSize: 24
                     font.bold: true
@@ -651,10 +707,10 @@ Window {
 
                 Canvas {
                         id: upArrow3
-                        width: 100
-                        height: 100
+                        width: 100/1423*Screen.width
+                        height: 100/800*Screen.height
                         x:joy3.x+joy3.implicitWidth+20
-                        y:290
+                        y:290/800*Screen.height
                         property color arrowColor: "white"
 
                         onPaint: {
@@ -693,8 +749,8 @@ Window {
 
                 Canvas {
                         id: downArrow3
-                        width: 100
-                        height: 100
+                        width: 100/1423*Screen.width
+                        height: 100/800*Screen.height
                         x:joy3.x+joy3.implicitWidth+20
                         y:upArrow3.y+upArrow3.height+20
                         property color arrowColor: "white"
@@ -736,8 +792,8 @@ Window {
                     id:joy4
                     text: "JOY 4"
                     color: "white"
-                    x:600
-                    y:380
+                    x:600/1423*Screen.width
+                    y:380/800*Screen.height
                     font.family: "Helvetica"
                     font.pointSize: 24
                     font.bold: true
@@ -745,10 +801,10 @@ Window {
 
                 Canvas {
                         id: leftArrow4
-                        width: 100
-                        height: 100
+                        width: 100/1423*Screen.width
+                        height: 100/800*Screen.height
                         x:joy4.x+joy4.implicitWidth+20
-                        y:350
+                        y:350/800*Screen.height
                         property color arrowColor: "white"
 
                         onPaint: {
@@ -786,10 +842,10 @@ Window {
                     }
                 Canvas {
                     id: rightArrow4
-                    width: 100
-                    height: 100
+                    width: 100/1423*Screen.width
+                    height: 100/800*Screen.height
                     x:joy4.x+joy4.implicitWidth+20+leftArrow4.width+20
-                    y:350
+                    y:350/800*Screen.height
                     property color arrowColor: "white"
 
                     onPaint: {
@@ -830,19 +886,19 @@ Window {
             Rectangle{
                 id:positionRectangle
                 color:"#003366"
-                x:474
-                y:533
-                width:949
-                height:267
-                border.color:"white"
-                border.width: 4
+                x:474/1423*Screen.width
+                y:533/800*Screen.height
+                width:949/1423*Screen.width
+                height:267/800*Screen.height
+                // border.color:"#00CCCC"
+                // border.width: 4/1423*Screen.width
 
                 Column {
                     anchors.centerIn: parent
-                    spacing: 50
+                    spacing: 50/800*Screen.height
 
                     Row {
-                        spacing: 20
+                        spacing: 20/1423*Screen.width
 
                         Text {
                             text: "Position"
@@ -854,13 +910,13 @@ Window {
                         }
 
                         Row {
-                            spacing: 50
+                            spacing: 50/1423*Screen.width
 
                             Rectangle {
-                                width: 100
-                                height: 40
+                                width: 100/1423*Screen.width
+                                height: 40/800*Screen.height
                                 border.color: "white"
-                                border.width: 2
+                                border.width: 2/1423*Screen.width
                                 radius: 5
                                 Text {
                                     id:x
@@ -872,10 +928,10 @@ Window {
                             }
 
                             Rectangle {
-                                width: 100
-                                height: 40
+                                width: 100/1423*Screen.width
+                                height: 40/800*Screen.height
                                 border.color: "white"
-                                border.width: 2
+                                border.width: 2/1423*Screen.width
                                 radius: 5
                                 Text {
                                     id:y
@@ -887,10 +943,10 @@ Window {
                             }
 
                             Rectangle {
-                                width: 100
-                                height: 40
+                                width: 100/1423*Screen.width
+                                height: 40/800*Screen.height
                                 border.color: "white"
-                                border.width: 2
+                                border.width: 2/1423*Screen.width
                                 radius: 5
                                 Text {
                                     id:z
@@ -904,7 +960,7 @@ Window {
                     }
 
                     Row {
-                        spacing: 20
+                        spacing: 20/1423*Screen.width
 
                         Text {
                             text: "Angle"
@@ -916,13 +972,13 @@ Window {
                         }
 
                         Row {
-                            spacing: 50
+                            spacing: 50/1423*Screen.width
 
                             Rectangle {
-                                width: 150
-                                height: 40
+                                width: 150/1423*Screen.width
+                                height: 40/800*Screen.height
                                 border.color: "white"
-                                border.width: 2
+                                border.width: 2/1423*Screen.width
                                 radius: 5
                                 Text {
                                     id:q1
@@ -934,10 +990,10 @@ Window {
                             }
 
                             Rectangle {
-                                width: 150
-                                height: 40
+                                width: 150/1423*Screen.width
+                                height: 40/800*Screen.height
                                 border.color: "white"
-                                border.width: 2
+                                border.width: 2/1423*Screen.width
                                 radius: 5
                                 Text {
                                     id:q2
@@ -949,10 +1005,10 @@ Window {
                             }
 
                             Rectangle {
-                                width: 150
-                                height: 40
+                                width: 150/1423*Screen.width
+                                height: 40/800*Screen.height
                                 border.color: "white"
-                                border.width: 2
+                                border.width: 2/1423*Screen.width
                                 radius: 5
                                 Text {
                                     id:q3
@@ -964,10 +1020,10 @@ Window {
                             }
 
                             Rectangle {
-                                width: 150
-                                height: 40
+                                width: 150/1423*Screen.width
+                                height: 40/800*Screen.height
                                 border.color: "white"
-                                border.width: 2
+                                border.width: 2/1423*Screen.width
                                 radius: 5
                                 Text {
                                     id:q4
@@ -990,18 +1046,18 @@ Window {
         anchors.fill: parent
 
         Rectangle {
-            width: 800
-            height: 750
+            width: 800/1423*Screen.width
+            height: 750/800*Screen.height
             radius: 10
             color: "white"
             border.color: "gray"
-            border.width: 2
+            border.width: 2/1423*Screen.width
             anchors.centerIn: parent
 
             // Shadow effect using a semi-transparent Rectangle
             Rectangle {
-                width: 800
-                height: 750
+                width: 800/1423*Screen.width
+                height: 750/800*Screen.height
                 radius: 10
                 color: "black"
                 opacity: 0.2
@@ -1011,11 +1067,11 @@ Window {
             }
 
             Column {
-                spacing: 40
+                spacing: 40/800*Screen.height
                 anchors.centerIn: parent
 
                 Row {
-                    spacing: 40
+                    spacing: 40/1423*Screen.width
                     anchors.horizontalCenter: parent.horizontalCenter
                     Text {
                         text: "Q1:"
@@ -1027,8 +1083,8 @@ Window {
                         id: q1Field
                         placeholderText: "Enter Q1"
                         font.pixelSize: 40 // Increase font size
-                        width: 400 // Adjust width
-                        height: 100
+                        width: 400/1423*Screen.width // Adjust width
+                        height: 100/800*Screen.height
                         background: Rectangle {
                             color: "#E8EAF6"
                             radius: 10
@@ -1038,7 +1094,7 @@ Window {
                 }
 
                 Row {
-                    spacing: 40
+                    spacing: 40/1423*Screen.width
                     anchors.horizontalCenter: parent.horizontalCenter
                     Text {
                         text: "Q2:"
@@ -1050,8 +1106,8 @@ Window {
                         id: q2Field
                         placeholderText: "Enter Q2"
                         font.pixelSize: 40 // Increase font size
-                        width: 400 // Adjust width
-                        height: 100
+                        width: 400/1423*Screen.width // Adjust width
+                        height: 100/800*Screen.height
                         background: Rectangle {
                             color: "#E8EAF6"
                             radius: 10
@@ -1061,7 +1117,7 @@ Window {
                 }
 
                 Row {
-                    spacing: 40
+                    spacing: 40/1423*Screen.width
                     anchors.horizontalCenter: parent.horizontalCenter
                     Text {
                         text: "Q3:"
@@ -1073,8 +1129,8 @@ Window {
                         id: q3Field
                         placeholderText: "Enter Q3"
                         font.pixelSize: 40 // Increase font size
-                        width: 400 // Adjust width
-                        height: 100
+                        width: 400/1423*Screen.width // Adjust width
+                        height: 100/800*Screen.height
                         background: Rectangle {
                             color: "#E8EAF6"
                             radius: 10
@@ -1084,7 +1140,7 @@ Window {
                 }
 
                 Row {
-                    spacing: 40
+                    spacing: 40/1423*Screen.width
                     anchors.horizontalCenter: parent.horizontalCenter
                     Text {
                         text: "Q4:"
@@ -1096,8 +1152,8 @@ Window {
                         id: q4Field
                         placeholderText: "Enter Q4"
                         font.pixelSize: 40 // Increase font size
-                        width: 400 // Adjust width
-                        height: 100
+                        width: 400/1423*Screen.width // Adjust width
+                        height: 100/800*Screen.height
                         background: Rectangle {
                             color: "#E8EAF6"
                             radius: 10
@@ -1109,8 +1165,8 @@ Window {
                 Button {
                     text: "Print"
                     font.pixelSize: 40 // Increase font size
-                    width: 240 // Adjust width
-                    height: 100
+                    width: 240/1423*Screen.width // Adjust width
+                    height: 100/800*Screen.height
                     anchors.horizontalCenter: parent.horizontalCenter
                     background: Rectangle {
                         color: "#0076AE"
@@ -1149,18 +1205,18 @@ Window {
         anchors.fill: parent
 
         Rectangle {
-            width: 800
-            height: 600
+            width: 800/1423*Screen.width
+            height: 600/800*Screen.height
             radius: 10
             color: "white"
             border.color: "gray"
-            border.width: 2
+            border.width: 2/1423*Screen.width
             anchors.centerIn: parent
 
             // Shadow effect using a semi-transparent Rectangle
             Rectangle {
-                width: 800
-                height: 600
+                width: 800/1423*Screen.width
+                height: 600/800*Screen.height
                 radius: 10
                 color: "black"
                 opacity: 0.2
@@ -1170,11 +1226,11 @@ Window {
             }
 
             Column {
-                spacing: 40
+                spacing: 40/800*Screen.height
                 anchors.centerIn: parent
 
                 Row {
-                    spacing: 40
+                    spacing: 40/1423*Screen.width
                     anchors.horizontalCenter: parent.horizontalCenter
                     Text {
                         text: "X:"
@@ -1186,8 +1242,8 @@ Window {
                         id: xField
                         placeholderText: "Enter X"
                         font.pixelSize: 40 // Increase font size
-                        width: 400 // Adjust width
-                        height: 100
+                        width: 400/1423*Screen.width // Adjust width
+                        height: 100/800*Screen.height
                         background: Rectangle {
                             color: "#E8EAF6"
                             radius: 10
@@ -1197,7 +1253,7 @@ Window {
                 }
 
                 Row {
-                    spacing: 40
+                    spacing: 40/1423*Screen.width
                     anchors.horizontalCenter: parent.horizontalCenter
                     Text {
                         text: "Y:"
@@ -1209,8 +1265,8 @@ Window {
                         id: yField
                         placeholderText: "Enter Y"
                         font.pixelSize: 40 // Increase font size
-                        width: 400 // Adjust width
-                        height: 100
+                        width: 400/1423*Screen.width // Adjust width
+                        height: 100/800*Screen.height
                         background: Rectangle {
                             color: "#E8EAF6"
                             radius: 10
@@ -1220,7 +1276,7 @@ Window {
                 }
 
                 Row {
-                    spacing: 40
+                    spacing: 40/1423*Screen.width
                     anchors.horizontalCenter: parent.horizontalCenter
                     Text {
                         text: "Z:"
@@ -1232,8 +1288,8 @@ Window {
                         id: zField
                         placeholderText: "Enter Z"
                         font.pixelSize: 40 // Increase font size
-                        width: 400 // Adjust width
-                        height: 100
+                        width: 400/1423*Screen.width // Adjust width
+                        height: 100/800*Screen.height
                         background: Rectangle {
                             color: "#E8EAF6"
                             radius: 10
@@ -1245,8 +1301,8 @@ Window {
                 Button {
                     text: "Print"
                     font.pixelSize: 40 // Increase font size
-                    width: 240 // Adjust width
-                    height: 100
+                    width: 240/1423*Screen.width // Adjust width
+                    height: 100/800*Screen.height
                     anchors.horizontalCenter: parent.horizontalCenter
                     background: Rectangle {
                         color: "#0076AE"
